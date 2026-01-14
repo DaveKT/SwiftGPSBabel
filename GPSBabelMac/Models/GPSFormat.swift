@@ -105,21 +105,44 @@ extension GPSFormat {
 
         let lines = output.components(separatedBy: .newlines)
         for line in lines {
-            // Format: type	id	parent	description
-            // Example: file	gpx	gpx	GPX XML
+            // Format: type	flags	id	extension	description
+            // Example: file	rwrwrw	gpx	gpx	GPX XML
             let components = line.components(separatedBy: "\t")
             guard components.count >= 4 else { continue }
 
             let type = components[0]
-            let formatId = components[1]
-            let description = components[3]
+            let flags = components[1]
+            let formatId = components[2]
 
-            // Determine capabilities based on type
-            let supportsRead = type == "file" || type == "serial"
-            let supportsWrite = type == "file"
+            // Description is in column 4, but might have extension in column 3
+            let description: String
+            let fileExtension: String?
 
-            // Try to infer extensions from the ID or description
-            let extensions = inferExtensions(from: formatId, description: description)
+            if components.count >= 5 {
+                fileExtension = components[3].isEmpty ? nil : components[3]
+                description = components[4]
+            } else {
+                fileExtension = nil
+                description = components[3]
+            }
+
+            // Parse flags to determine capabilities
+            // Flags format: rwrwrw (read waypoints, write waypoints, read routes, write routes, read tracks, write tracks)
+            let supportsRead = flags.contains("r")
+            let supportsWrite = flags.contains("w")
+
+            // Skip internal formats that don't support reading or writing
+            guard supportsRead || supportsWrite else { continue }
+
+            // Build extensions list
+            var extensions: [String] = []
+            if let ext = fileExtension, !ext.isEmpty {
+                // Extension might be comma-separated like "tcx/crs/hst/xml"
+                let exts = ext.split(separator: "/").map { String($0) }
+                extensions = exts.map { $0.hasPrefix(".") ? $0 : ".\($0)" }
+            } else {
+                extensions = inferExtensions(from: formatId, description: description)
+            }
 
             let format = GPSFormat(
                 id: formatId,

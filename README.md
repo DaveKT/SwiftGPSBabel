@@ -1,5 +1,7 @@
 # GPSBabel for macOS
 
+**Version 1.1.0**
+
 A native macOS application providing a graphical interface for the GPSBabel command-line tool.
 
 ## Overview
@@ -43,6 +45,7 @@ GPSBabelMac/
 ├── GPSBabelMac/
 │   ├── GPSBabelMacApp.swift          # App entry point
 │   ├── ContentView.swift              # Main window view
+│   ├── GPSBabelMac.entitlements       # Sandbox permissions
 │   ├── Models/
 │   │   ├── GPSFormat.swift            # Format definitions
 │   │   ├── ConversionJob.swift        # Job model
@@ -52,7 +55,8 @@ GPSBabelMac/
 │   │   └── BinaryLocator.swift        # Find gpsbabel binary
 │   ├── Views/
 │   │   ├── FormatPickerView.swift     # Format selection UI
-│   │   └── ConversionLogView.swift    # Log output display
+│   │   ├── ConversionLogView.swift    # Log output display
+│   │   └── SettingsView.swift         # Settings window
 │   ├── ViewModels/
 │   │   └── ConversionViewModel.swift  # Main conversion logic
 │   └── Resources/
@@ -61,6 +65,14 @@ GPSBabelMac/
 
 ## Current Implementation Status
 
+### Version 1.1.0 - Settings & Format Improvements (Complete! ✅)
+
+**New Features:**
+- ✅ Settings window with custom binary path configuration
+- ✅ Fixed format dropdown parsing - now shows all valid formats
+- ✅ Sandbox permissions for system directories
+- ✅ Real-time binary validation and version detection
+
 ### Phase 1 - Foundation (Complete! ✅)
 
 - ✅ Project structure created
@@ -68,7 +80,7 @@ GPSBabelMac/
 - ✅ Models created (GPSFormat, ConversionJob, ConversionResult)
 - ✅ GPSBabelService implemented (core conversion functionality)
 - ✅ ConversionViewModel implemented (state management)
-- ✅ UI components completed (ContentView, FormatPickerView, ConversionLogView)
+- ✅ UI components completed (ContentView, FormatPickerView, ConversionLogView, SettingsView)
 - ✅ All source files compile successfully
 
 ### Features Implemented
@@ -119,10 +131,11 @@ Searches for the `gpsbabel` binary in the following order:
 
 ## Features
 
-### Current Features (Phase 1 MVP)
+### Current Features (v1.1.0)
 
+**Core Conversion:**
 - ✅ File selection via picker or drag-and-drop
-- ✅ Format selection (input/output) with common formats
+- ✅ Format selection with 60+ input formats and 50+ output formats
 - ✅ Auto-detect input format option
 - ✅ Filter options: simplify tracks, remove duplicates, merge tracks
 - ✅ Real-time conversion log with auto-scroll
@@ -130,18 +143,50 @@ Searches for the `gpsbabel` binary in the following order:
 - ✅ Error handling with user-friendly messages
 - ✅ Open output file in Finder
 - ✅ File size display
-- ✅ GPSBabel version detection
-- ✅ Comprehensive binary location search
+
+**Settings & Configuration:**
+- ✅ Settings window (⌘,) for custom binary path
+- ✅ Browse and select custom gpsbabel binary location
+- ✅ Real-time binary validation and version detection
+- ✅ Automatic binary location search across common paths
+- ✅ Support for Homebrew (Apple Silicon & Intel) and system installations
+- ✅ Persistent custom path storage
+
+**Format Support:**
+- ✅ Dynamic format loading from gpsbabel
+- ✅ Proper parsing of format capabilities (read/write support)
+- ✅ File extension detection and matching
+- ✅ Common formats highlighted: GPX, KML, FIT, TCX, CSV, GDB
+
+## Changelog
+
+### Version 1.1.0 (2024-01-13)
+**Added:**
+- Settings window with custom binary path configuration
+- Browse button for selecting gpsbabel binary
+- Real-time binary validation with version display
+- Sandbox permissions for common installation directories
+
+**Fixed:**
+- Format dropdown parsing - now correctly reads gpsbabel -^2 output
+- Format capabilities detection from flags field
+- File extension extraction from gpsbabel output
+- Blank/invalid entries in format dropdowns
+
+### Version 1.0.0 (2024-01-13)
+- Initial release with core conversion functionality
+- Drag-and-drop file input
+- Format selection and filters
+- Real-time conversion logging
 
 ## Next Steps (Phase 2)
 
 1. Test with real GPS files
-2. Improve format auto-detection
-3. Add batch conversion support
-4. Add conversion history
-5. Settings/preferences window
-6. Advanced filter options
-7. Menu bar commands
+2. Add batch conversion support
+3. Add conversion history
+4. Advanced filter options with custom parameters
+5. Menu bar quick actions
+6. Export presets/templates
 
 ## Architecture
 
