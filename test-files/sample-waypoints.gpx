@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="GPSBabel Test Data"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Sample Waypoints - 10 Points</name>
+    <desc>A test file with 10 waypoints (points of interest)</desc>
+    <time>2024-01-13T10:00:00Z</time>
+  </metadata>
+  <wpt lat="37.7749" lon="-122.4194">
+    <ele>10.0</ele>
+    <time>2024-01-13T10:00:00Z</time>
+    <name>Start Point</name>
+    <desc>Beginning of the journey</desc>
+    <sym>Flag, Blue</sym>
+  </wpt>
+  <wpt lat="37.7850" lon="-122.4094">
+    <ele>15.0</ele>
+    <time>2024-01-13T10:05:00Z</time>
+    <name>Coffee Shop</name>
+    <desc>Good coffee place</desc>
+    <sym>Restaurant</sym>
+  </wpt>
+  <wpt lat="37.7900" lon="-122.4000">
+    <ele>20.0</ele>
+    <time>2024-01-13T10:15:00Z</time>
+    <name>Viewpoint</name>
+    <desc>Great city views</desc>
+    <sym>Scenic Area</sym>
+  </wpt>
+  <wpt lat="37.7950" lon="-122.3950">
+    <ele>25.0</ele>
+    <time>2024-01-13T10:30:00Z</time>
+    <name>Park Entrance</name>
+    <desc>Main entrance to the park</desc>
+    <sym>Park</sym>
+  </wpt>
+  <wpt lat="37.8000" lon="-122.3900">
+    <ele>30.0</ele>
+    <time>2024-01-13T10:45:00Z</time>
+    <name>Lake</name>
+    <desc>Beautiful lake in the park</desc>
+    <sym>Water</sym>
+  </wpt>
+  <wpt lat="37.8050" lon="-122.3850">
+    <ele>35.0</ele>
+    <time>2024-01-13T11:00:00Z</time>
+    <name>Picnic Area</name>
+    <desc>Shaded picnic tables</desc>
+    <sym>Picnic Area</sym>
+  </wpt>
+  <wpt lat="37.8100" lon="-122.3800">
+    <ele>40.0</ele>
+    <time>2024-01-13T11:15:00Z</time>
+    <name>Trail Head</name>
+    <desc>Start of hiking trail</desc>
+    <sym>Trail Head</sym>
+  </wpt>
+  <wpt lat="37.8150" lon="-122.3750">
+    <ele>50.0</ele>
+    <time>2024-01-13T11:45:00Z</time>
+    <name>Summit</name>
+    <desc>Top of the hill</desc>
+    <sym>Summit</sym>
+  </wpt>
+  <wpt lat="37.8100" lon="-122.3700">
+    <ele>45.0</ele>
+    <time>2024-01-13T12:15:00Z</time>
+    <name>Rest Stop</name>
+    <desc>Bench with water fountain</desc>
+    <sym>Restroom</sym>
+  </wpt>
+  <wpt lat="37.8000" lon="-122.3650">
+    <ele>20.0</ele>
+    <time>2024-01-13T12:45:00Z</time>
+    <name>End Point</name>
+    <desc>Journey complete</desc>
+    <sym>Flag, Red</sym>
+  </wpt>
+</gpx>

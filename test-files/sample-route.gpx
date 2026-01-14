@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="GPSBabel Test Data"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Sample Route - 10 Points</name>
+    <desc>A planned route with 10 route points for navigation</desc>
+    <time>2024-01-13T10:00:00Z</time>
+  </metadata>
+  <rte>
+    <name>Downtown Tour</name>
+    <desc>Walking tour of downtown attractions</desc>
+    <rtept lat="37.7749" lon="-122.4194">
+      <ele>10.0</ele>
+      <name>Ferry Building</name>
+      <desc>Historic ferry terminal and marketplace</desc>
+    </rtept>
+    <rtept lat="37.7760" lon="-122.4180">
+      <ele>12.0</ele>
+      <name>Embarcadero Plaza</name>
+      <desc>Waterfront plaza with views</desc>
+    </rtept>
+    <rtept lat="37.7770" lon="-122.4170">
+      <ele>15.0</ele>
+      <name>Market Street</name>
+      <desc>Main downtown street</desc>
+    </rtept>
+    <rtept lat="37.7780" lon="-122.4160">
+      <ele>18.0</ele>
+      <name>Union Square</name>
+      <desc>Shopping district</desc>
+    </rtept>
+    <rtept lat="37.7790" lon="-122.4150">
+      <ele>20.0</ele>
+      <name>Cable Car Museum</name>
+      <desc>Learn about cable cars</desc>
+    </rtept>
+    <rtept lat="37.7800" lon="-122.4140">
+      <ele>25.0</ele>
+      <name>Chinatown Gate</name>
+      <desc>Entrance to Chinatown</desc>
+    </rtept>
+    <rtept lat="37.7810" lon="-122.4130">
+      <ele>30.0</ele>
+      <name>North Beach</name>
+      <desc>Italian neighborhood</desc>
+    </rtept>
+    <rtept lat="37.7820" lon="-122.4120">
+      <ele>35.0</ele>
+      <name>Coit Tower</name>
+      <desc>Iconic tower with city views</desc>
+    </rtept>
+    <rtept lat="37.7830" lon="-122.4110">
+      <ele>40.0</ele>
+      <name>Fisherman's Wharf</name>
+      <desc>Tourist waterfront area</desc>
+    </rtept>
+    <rtept lat="37.7840" lon="-122.4100">
+      <ele>12.0</ele>
+      <name>Pier 39</name>
+      <desc>Shopping and sea lions</desc>
+    </rtept>
+  </rte>
+</gpx>

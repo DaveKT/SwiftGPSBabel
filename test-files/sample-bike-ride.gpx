@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="GPSBabel Test Data"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Sample Bike Ride - 10 Points</name>
+    <desc>A cycling activity with speed and heart rate data</desc>
+    <time>2024-01-13T14:00:00Z</time>
+  </metadata>
+  <trk>
+    <name>Afternoon Bike Ride</name>
+    <type>cycling</type>
+    <trkseg>
+      <trkpt lat="37.7500" lon="-122.4500">
+        <ele>5.0</ele>
+        <time>2024-01-13T14:00:00Z</time>
+      </trkpt>
+      <trkpt lat="37.7520" lon="-122.4480">
+        <ele>8.0</ele>
+        <time>2024-01-13T14:03:00Z</time>
+      </trkpt>
+      <trkpt lat="37.7540" lon="-122.4460">
+        <ele>12.0</ele>
+        <time>2024-01-13T14:06:00Z</time>
+      </trkpt>
+      <trkpt lat="37.7560" lon="-122.4440">
+        <ele>15.0</ele>
+        <time>2024-01-13T14:09:00Z</time>
+      </trkpt>
+      <trkpt lat="37.7580" lon="-122.4420">
+        <ele>20.0</ele>
+        <time>2024-01-13T14:12:00Z</time>
+      </trkpt>
+      <trkpt lat="37.7600" lon="-122.4400">
+        <ele>25.0</ele>
+        <time>2024-01-13T14:15:00Z</time>
+      </trkpt>
+      <trkpt lat="37.7620" lon="-122.4380">
+        <ele>30.0</ele>
+        <time>2024-01-13T14:18:00Z</time>
+      </trkpt>
+      <trkpt lat="37.7640" lon="-122.4360">
+        <ele>28.0</ele>
+        <time>2024-01-13T14:21:00Z</time>
+      </trkpt>
+      <trkpt lat="37.7660" lon="-122.4340">
+        <ele>22.0</ele>
+        <time>2024-01-13T14:24:00Z</time>
+      </trkpt>
+      <trkpt lat="37.7680" lon="-122.4320">
+        <ele>15.0</ele>
+        <time>2024-01-13T14:27:00Z</time>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>
