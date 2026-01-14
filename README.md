@@ -1,6 +1,6 @@
 # GPSBabel for macOS
 
-**Version 1.1.0**
+**Version 1.2.0**
 
 A native macOS application providing a graphical interface for the GPSBabel command-line tool.
 
@@ -65,9 +65,17 @@ GPSBabelMac/
 
 ## Current Implementation Status
 
-### Version 1.1.0 - Settings & Format Improvements (Complete! ✅)
+### Version 1.2.0 - Sandbox File Access Fix (Complete! ✅)
 
 **New Features:**
+- ✅ Fixed file write permissions for sandboxed environment
+- ✅ Temporary file conversion workflow for reliable output
+- ✅ Test files included (4 sample GPX files with 10 records each)
+- ✅ Comprehensive test file documentation
+
+### Version 1.1.0 - Settings & Format Improvements (Complete! ✅)
+
+**Features Added:**
 - ✅ Settings window with custom binary path configuration
 - ✅ Fixed format dropdown parsing - now shows all valid formats
 - ✅ Sandbox permissions for system directories
@@ -159,6 +167,28 @@ Searches for the `gpsbabel` binary in the following order:
 - ✅ Common formats highlighted: GPX, KML, FIT, TCX, CSV, GDB
 
 ## Changelog
+
+### Version 1.2.0 (2024-01-14)
+**Added:**
+- Test files directory with 4 sample GPX files (10 records each)
+  - `sample-track.gpx` - Running activity with track points
+  - `sample-waypoints.gpx` - Named points of interest
+  - `sample-route.gpx` - Planned navigation route
+  - `sample-bike-ride.gpx` - Cycling activity
+- Comprehensive test file documentation and usage guide
+
+**Fixed:**
+- **Critical**: File write permissions in sandboxed environment
+  - Implemented two-step conversion: temp file → copy to destination
+  - Resolves "Operation not permitted" errors when writing to Desktop/Documents
+  - Now works reliably with all user-selected output locations
+- Security-scoped resource access for input files
+- Proper cleanup of temporary files after conversion
+
+**Technical:**
+- Refactored `GPSBabelService.convert()` to use temporary directory
+- Added automatic file cleanup with `defer` statements
+- Enhanced error messages for file operation failures
 
 ### Version 1.1.0 (2024-01-13)
 **Added:**

@@ -5,6 +5,46 @@ All notable changes to GPSBabel for macOS will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2024-01-14
+
+### Added
+- **Test Files**: Four sample GPX files with 10 records each for testing conversions
+  - `test-files/sample-track.gpx` - Morning run activity with elevation and timestamps
+  - `test-files/sample-waypoints.gpx` - Named points of interest with descriptions
+  - `test-files/sample-route.gpx` - Downtown walking tour route
+  - `test-files/sample-bike-ride.gpx` - Afternoon cycling activity
+- **Test Documentation**: Comprehensive README in test-files directory
+  - Usage scenarios and testing matrix
+  - Format conversion examples
+  - Troubleshooting guide
+  - File characteristics and expected outputs
+
+### Fixed
+- **Critical: Sandbox File Write Permissions**
+  - Resolved "Operation not permitted" errors when writing to Desktop, Documents, and other user directories
+  - Root cause: External processes (gpsbabel) cannot inherit sandbox permissions from parent app
+  - Solution: Two-step conversion process using temporary files
+    1. Convert to temporary directory (app has full access)
+    2. Copy completed file to user-selected destination (with security-scoped access)
+- **Security-Scoped Resources**: Properly access and release security-scoped bookmarks for input files
+- **File Cleanup**: Automatic cleanup of temporary files using `defer` statements
+- **Error Handling**: Enhanced error messages for file operation failures
+
+### Changed
+- **GPSBabelService.convert()**: Complete refactor of conversion workflow
+  - Now uses `FileManager.default.temporaryDirectory` for intermediate output
+  - Implements security-scoped resource access pattern correctly
+  - Adds robust error handling for copy operations
+- **Conversion Flow**:
+  - Before: gpsbabel writes directly to user location (fails in sandbox)
+  - After: gpsbabel writes to temp → app copies to user location (succeeds)
+
+### Technical Details
+- Temporary files use UUID-based names to avoid conflicts
+- Proper resource cleanup even on conversion failure
+- Security-scoped access limited to minimum necessary scope
+- No changes required to entitlements or sandbox configuration
+
 ## [1.1.0] - 2024-01-13
 
 ### Added

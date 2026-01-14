@@ -94,8 +94,23 @@ actor GPSBabelService {
             throw GPSBabelServiceError.invalidOutputPath(output)
         }
 
+        // Start accessing security-scoped resources for input
+        let inputAccess = input.startAccessingSecurityScopedResource()
+        defer {
+            if inputAccess { input.stopAccessingSecurityScopedResource() }
+        }
+
         let binaryURL = try await locateBinary()
         let startTime = Date()
+
+        // Create a temporary file for output that we have full access to
+        let tempDir = FileManager.default.temporaryDirectory
+        let tempOutput = tempDir.appendingPathComponent(UUID().uuidString).appendingPathExtension(output.pathExtension)
+
+        defer {
+            // Clean up temporary file
+            try? FileManager.default.removeItem(at: tempOutput)
+        }
 
         // Build command-line arguments
         var arguments: [String] = []
@@ -114,11 +129,11 @@ actor GPSBabelService {
             arguments.append(contentsOf: filterArgs)
         }
 
-        // Output format and file
+        // Output format and file (use temp file)
         arguments.append("-o")
         arguments.append(outputFormat.id)
         arguments.append("-F")
-        arguments.append(output.path)
+        arguments.append(tempOutput.path)
 
         // Create and configure process
         let process = Process()
@@ -155,12 +170,38 @@ actor GPSBabelService {
             throw GPSBabelServiceError.cancelled
         }
 
-        // Get output file size if successful
+        // Get output file size and copy to final destination if successful
         var outputFileSize: Int64?
         if process.terminationStatus == 0 {
-            if let attributes = try? FileManager.default.attributesOfItem(atPath: output.path),
-               let size = attributes[.size] as? Int64 {
-                outputFileSize = size
+            // Start accessing security-scoped resources for output
+            let outputAccess = output.startAccessingSecurityScopedResource()
+            let outputDirAccess = outputDirectory.startAccessingSecurityScopedResource()
+
+            defer {
+                if outputAccess { output.stopAccessingSecurityScopedResource() }
+                if outputDirAccess { outputDirectory.stopAccessingSecurityScopedResource() }
+            }
+
+            // Copy from temp location to final destination
+            do {
+                // Remove existing file if it exists
+                if FileManager.default.fileExists(atPath: output.path) {
+                    try FileManager.default.removeItem(at: output)
+                }
+
+                // Copy temp file to final destination
+                try FileManager.default.copyItem(at: tempOutput, to: output)
+
+                // Get file size
+                if let attributes = try? FileManager.default.attributesOfItem(atPath: output.path),
+                   let size = attributes[.size] as? Int64 {
+                    outputFileSize = size
+                }
+            } catch {
+                throw GPSBabelServiceError.conversionFailed(
+                    exitCode: -1,
+                    stderr: "Failed to copy output file to destination: \(error.localizedDescription)"
+                )
             }
         }
 
